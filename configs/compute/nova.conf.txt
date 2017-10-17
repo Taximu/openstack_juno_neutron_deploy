@@ -1,0 +1,57 @@
+[DEFAULT]
+dhcpbridge_flagfile=/etc/nova/nova.conf
+dhcpbridge=/usr/bin/nova-dhcpbridge
+logdir=/var/log/nova
+state_path=/var/lib/nova
+lock_path=/var/lock/nova
+force_dhcp_release=True
+libvirt_use_virtio_for_bridges=True
+verbose=True
+ec2_private_dns_show_ip=True
+api_paste_config=/etc/nova/api-paste.ini
+enabled_apis=ec2,osapi_compute,metadata
+
+rpc_backend = rabbit
+rabbit_host = controller
+rabbit_password = cab5f5cc3dbe930ae825
+
+auth_strategy = keystone
+
+my_ip = 192.168.10.4
+
+vnc_enabled = True
+vncserver_listen = 0.0.0.0
+vncserver_proxyclient_address = 192.168.10.4
+novncproxy_base_url = http://controller:6080/vnc_auto.html
+
+network_api_class = nova.network.api.API
+security_group_api = nova
+firewall_driver = nova.virt.libvirt.firewall.IptablesFirewallDriver
+network_manager = nova.network.manager.FlatDHCPManager
+network_size = 254
+allow_same_net_traffic = False
+multi_host = True
+send_arp_for_ha = True
+share_dhcp_address = True
+force_dhcp_release = True
+flat_network_bridge = br100
+flat_interface = eth1
+public_interface = eth1
+
+[keystone_authtoken]
+auth_uri = http://controller:5000/v2.0
+identity_uri = http://controller:35357
+admin_tenant_name = service
+admin_user = nova
+admin_password = 38d822846b8aaeb046fd
+
+[glance]
+host = controller
+
+[neutron]
+url = http://controller:9696
+auth_strategy = keystone
+admin_auth_url = http://controller:35357/v2.0
+admin_tenant_name = service
+admin_username = neutron
+admin_password = a4609aa35ac5e37bdb4f
