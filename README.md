@@ -1,5 +1,5 @@
 ![Alt text](http://occi-wg.org/wp-content/uploads/2010/12/openstack_slide.png)
-##What is the purpose of this repo?
+## What is the purpose of this repo?
 It is an automated installation of Openstack Juno Neutron platform, all the nodes + CephFS as the default filesystem for Block and Device Storages. Automation tool: Fabric.
 ## Install Ubuntu Server 14.04.1 64-bit
 ## Setup for development
